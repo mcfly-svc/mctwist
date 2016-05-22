@@ -66,6 +66,14 @@ func (d *Deployer) StartDeploy() {
 
 	d.Logger.Log(fmt.Sprintf("Saved %s build `%s` for project `%s`", spKey, d.BuildHandle, d.ProjectHandle))
 
+	buildConfig, err := d.SourceProvider.GetBuildConfig(d.Token, d.BuildHandle, d.ProjectHandle)
+	if err != nil {
+		d.Logger.Error(err)
+		return
+	}
+
+	d.Logger.Log(fmt.Sprintf("GOT BUILD CONFIG: %+v", buildConfig.Properties))
+
 	// NEXT:
 
 	// 1. get source code from provider .. d.SourceProvider.GetBuildSource()
