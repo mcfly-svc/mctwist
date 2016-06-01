@@ -18,7 +18,7 @@ func (l *McTwistLogger) Error(err error) {
 }
 
 func (l *McTwistLogger) ApiError(v interface{}) {
-	panic(fmt.Errorf("msplapi responded with an error: %+v\n", v))
+	panic(fmt.Errorf("mcflyapi responded with an error: %+v\n", v))
 }
 
 func (l *McTwistLogger) Log(msg string) {

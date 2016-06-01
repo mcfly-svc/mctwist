@@ -3,7 +3,7 @@ package main
 import "github.com/joeshaw/envdecode"
 
 type Config struct {
-	ApiUrl      string `env:"MSPL_API_URL,default=http://msplapi.ngrok.io"`
+	ApiUrl      string `env:"MSPL_API_URL,default=http://mcflyapi.ngrok.io"`
 	RabbitMQUrl string `env:"RABBITMQ_URL,default=amqp://guest:guest@localhost:5672/"`
 }
 

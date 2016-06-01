@@ -7,15 +7,15 @@ import (
 	"testing"
 
 	"github.com/mikec/mctwist"
-	"github.com/mikec/msplapi/api/apidata"
-	"github.com/mikec/msplapi/client"
-	"github.com/mikec/msplapi/client/mockclient"
-	"github.com/mikec/msplapi/provider"
-	"github.com/mikec/msplapi/provider/mockprovider"
+	"github.com/mcfly-svc/mcfly/api/apidata"
+	"github.com/mcfly-svc/mcfly/client"
+	"github.com/mcfly-svc/mcfly/client/mockclient"
+	"github.com/mcfly-svc/mcfly/provider"
+	"github.com/mcfly-svc/mcfly/provider/mockprovider"
 	"github.com/stretchr/testify/assert"
 )
 
-var apiErrOutput = "msplapi responded with an error:"
+var apiErrOutput = "mcflyapi responded with an error:"
 
 type MockClientReturn struct {
 	CR   *client.ClientResponse
@@ -114,7 +114,7 @@ func TestStartDeploy(t *testing.T) {
 
 		d := &main.Deployer{
 			Logger:         logger,
-			MsplClient:     mc,
+			McflyClient:     mc,
 			SourceProvider: mp,
 			Token:          test.Token,
 			BuildHandle:    test.BuildHandle,

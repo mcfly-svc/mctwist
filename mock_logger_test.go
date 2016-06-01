@@ -12,7 +12,7 @@ func (l *MockLogger) Error(err error) {
 }
 
 func (l *MockLogger) ApiError(v interface{}) {
-	l.ErrorOutput = fmt.Sprintf("msplapi responded with an error: %+v\n", v)
+	l.ErrorOutput = fmt.Sprintf("mcflyapi responded with an error: %+v\n", v)
 }
 
 func (l *MockLogger) Log(msg string) {

@@ -6,8 +6,8 @@ import (
 	"os"
 
 	"github.com/chrismrivera/cmd"
-	"github.com/mikec/msplapi/client"
-	"github.com/mikec/msplapi/mq"
+	"github.com/mcfly-svc/mcfly/client"
+	"github.com/mcfly-svc/mcfly/mq"
 )
 
 var cmdr *cmd.App = cmd.NewApp()
@@ -24,7 +24,7 @@ func main() {
 
 	cmdr.AddCommand(runCmd)
 
-	cmdr.Description = "[mctwist] build deployment manager for mspl"
+	cmdr.Description = "[mctwist] build deployment manager for mcfly"
 	if err := cmdr.Run(os.Args); err != nil {
 		if ue, ok := err.(*cmd.UsageErr); ok {
 			ue.ShowUsage()

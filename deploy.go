@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/mikec/msplapi/api/apidata"
-	"github.com/mikec/msplapi/client"
-	"github.com/mikec/msplapi/mq"
-	"github.com/mikec/msplapi/provider"
+	"github.com/mcfly-svc/mcfly/api/apidata"
+	"github.com/mcfly-svc/mcfly/client"
+	"github.com/mcfly-svc/mcfly/mq"
+	"github.com/mcfly-svc/mcfly/provider"
 )
 
 func HandleDeployMessage(messageBody []byte) {
@@ -26,7 +26,7 @@ func HandleDeployMessage(messageBody []byte) {
 
 	d := Deployer{
 		Logger:         mcTwistLogger,
-		MsplClient:     client.NewMsplClient(cfg.ApiUrl, ""),
+		McflyClient:     client.NewMcflyClient(cfg.ApiUrl, ""),
 		SourceProvider: sp,
 		Token:          msg.SourceProviderAccessToken,
 		BuildHandle:    msg.BuildHandle,
@@ -38,7 +38,7 @@ func HandleDeployMessage(messageBody []byte) {
 
 type Deployer struct {
 	Logger         Logger
-	MsplClient     client.Client
+	McflyClient     client.Client
 	SourceProvider provider.SourceProvider
 	Token          string
 	BuildHandle    string
@@ -54,7 +54,7 @@ func (d *Deployer) StartDeploy() {
 	}
 
 	// TODO: make sure this call is authenticated in some way...
-	cr, _, err := d.MsplClient.SaveBuild(&apidata.BuildReq{
+	cr, _, err := d.McflyClient.SaveBuild(&apidata.BuildReq{
 		Handle:        d.BuildHandle,
 		ProjectHandle: d.ProjectHandle,
 		Provider:      spKey,
@@ -80,6 +80,6 @@ func (d *Deployer) StartDeploy() {
 
 	// 2. save the source code to AWS ... (no provider implementation needed)
 
-	// 3. call to msplapi to set build status to `completed`
+	// 3. call to mcflyapi to set build status to `completed`
 
 }
